@@ -1,0 +1,63 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1d1d1d;
+}
+
+#main{
+    padding: 26px;
+    display: grid;
+    margin: auto;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: repeat(8, 11.5%);
+    grid-template-rows: repeat(4, 23%);
+    justify-content: space-between;
+    align-content: space-between;
+
+}
+
+img{
+    height: 60%;
+}
+
+.card{
+    background: linear-gradient(#ac31dc, #bdfc83);
+    border-radius: 12px;
+    padding: 6px;
+    text-align: center;
+    text-transform: capitalize;
+    border: 6px solid rgb(255, 203, 5);
+    transition: all 0.5s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card:active {
+    transform: scale(1.1);
+}
+
+/* mamke it so the poke card matches the poke type */
+
+
+/* Poke Type Colors */
+
+.psychic-type {
+    background: linear-gradient(#DC3164, #fc83a7);
+    
+}
+.grass-type {
+    background: linear-gradient(#366d28, #98e785);
+}
+.bug-type {
+    background: linear-gradient(#86960B, rgb(201, 230, 194));
+}
+.water-type {
+    background: linear-gradient(#1964BB, rgb(163, 172, 207);
+}
