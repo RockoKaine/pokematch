@@ -92,6 +92,9 @@ function shuffledUp(arr) {
   return arr;
 }
 
+
+
+
 kanto();
 
 
