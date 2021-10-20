@@ -13,10 +13,20 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    font-family: Basic;
+    letter-spacing: 3px;
+    font-size: 0.75rem;
 }
 
 
-
+@font-face {
+  font-family: Dots;
+  src: url(../dots2.ttf);
+}
+@font-face {
+  font-family: Basic;
+  src: url(../PressStart2P-Regular.ttf);
+}
 
 
 #main {
@@ -39,7 +49,9 @@ body {
 .pokecard-holder {
   width: 200px;
   height: 250px;
-  text-transform: uppercase; 
+  text-transform: uppercase;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 1); 
+  color: whitesmoke;
 }
 
 
@@ -243,10 +255,10 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
   background: linear-gradient(#00459e, #516bff);
 }
 .rock-type {
-  background: linear-gradient(#727272, #ffffff);
+  background: linear-gradient(#727272, #cccccc);
 }
 .electric-type {
-  background: linear-gradient(#FFFC00, #fffdc4 );
+  background: linear-gradient(#e09900, #fffdc4 );
 }
 .psychic-type {
   background: linear-gradient(#ff0088, #ffb1db);
@@ -279,7 +291,7 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
   background: linear-gradient(#4fb9ff,#b4e3ff );
 }
 .steel-type {
-  background: linear-gradient(#81807E,#f7f6f4 );
+  background: linear-gradient(#acacac,#f7f6f4 );
 }
 .dragon-type {
   background: linear-gradient(#7E2FA2,#e3bdf5 );
@@ -306,7 +318,8 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
   text-align: center;
   color: whitesmoke;
   padding-top: 20px;
-  font-size: 1.85rem;
+  font-size: 1rem;
+  
 }
 
 #scoreboard {
@@ -323,11 +336,49 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
 }
 #matches, #turns {
   color:rgb(0, 233, 12);
-  font-size: 2.5rem;
+  font-size: 4rem;
   text-align: center;
+  font-family: Dots;
+  line-height: 3rem;
 }
 #game-controls {
   width: 100%;
   height: 10%;
 
 }
+
+#reset-btn {
+  background:rgb(255, 203, 5);
+  text-decoration: none;
+  font-size: 2rem;
+  padding: 16px;
+  text-align: center;
+  width: 60%;
+  /* border-radius: 10px; */
+  border-bottom: solid 6px black;
+  border-right: solid 6px black;
+}
+
+#reset-btn:hover {
+  filter: brightness(.8);
+}
+#reset-btn:active{
+  transform: scale(.95);
+  border-bottom: solid 0px rgba(0,0,0,0);
+  border-right: solid 0px rgba(0,0,0,0);
+}
+
+#reset-btn:focus {
+  text-decoration: none;
+  color: black;
+  filter: brightness(.7);
+}
+
+
+#game-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
