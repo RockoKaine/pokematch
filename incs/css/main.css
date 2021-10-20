@@ -20,7 +20,8 @@ body {
     margin: auto;
     height: 100vh;
     width: 100vw;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(8, 12%);
+    /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
     grid-gap: 4%;
     grid-template-rows: repeat(auto-fill, 250px);
     justify-content: space-between;
@@ -29,32 +30,152 @@ body {
 
 }
 
-img{
-    height: 60%;
-}
 
-.card{
-    border-radius: 12px;
-    height: 250px;
-    padding: 6px;
-    text-align: center;
-    text-transform: capitalize;
+
+/* pokecards */
+
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+  }
+  body {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .pokecard-holder {
+  
+    width: 110px;
+    height: 150px;
+    
+  }
+  
+  
+  .pokecard-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 1s;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    
+  }
+  
+  .pokecard-holder:hover .pokecard-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .pokecard-front, .pokecard-back {
+    width: 100%;
+    height: 100%;
+    transform rotateY(0deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    
+    
+  }
+  
+  .poke-img {
+    width : 65%;
+  }
+  
+  .pokecard-front {
+     position: absolute;
+    background: linear-gradient(#FFFC00, #fffdc4 );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
     border: 6px solid rgb(255, 203, 5);
-    transition: all 0.5s ease;
-    box-shadow: 2px 2px 15px 0px rgba(0,0,0,0.8);
-    color: #000;
-    font-size: 1.5rem;
-}
+    
+  }
+  
+  .pokecard-back {
+     position: absolute;
+    background: linear-gradient(-40deg, #3c5aa6, #88bdf3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 6px solid rgb(255, 203, 5);
+    transform: rotateY(180deg);
+    
+    
+  }
+  
+  .pokeball {
+    width: 100%;
+    height: auto;
+    border-radius: 50%; 
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: auto;
+    transform: rotateY(180deg);
+  }
+  
+  .pokeball-top {
+  height: 38px;
+   width: 76px;
+  background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%); 
+    border-radius: 41px 41px 0 0;
+    border: solid 3px black;
+    margin: auto;
+    
+  }
+  
+  .pokeball-bottom {
+    height: 38px;
+    width: 76px;
+    background: whitesmoke;
+    border-radius:  0 0 41px 41px;
+    margin: auto;
+    border: solid 3px black;
+    
+  }
+  
+  .pokeball-center {
+    height: 20px;
+    width: 20px;
+    background: whitesmoke;
+    border: solid 3px black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .pokeball-btn {
+    
+    width: 10px;
+    height: 10px;
+    border: solid 2px black;
+    border-radius: 50%;
+    
+    
+  }
 
 
 
-.card:hover {
-    transform: scale(1.05);
-}
 
-.card:active {
-    transform: scale(1.1);
-}
+
+
+
+
+
+  
+
+  
 
 
 /* Poke Type Colors */

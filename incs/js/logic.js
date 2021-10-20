@@ -27,16 +27,35 @@ const getData = async (pokemon)=>{
     const response = await fetch(url);
     const urlData = await response.json();
 
-    main.innerHTML += `<div class="card ${urlData.types[0].type.name}-type" name="${urlData.name}" onclick="checkMatch(this)">
-                        <h3>${urlData.name}</h3>
-                        <img class="poke-img" src="${urlData.sprites.front_default}">
-                        <h3>#${urlData.id}</h3>
-                        </div>`;
+    main.innerHTML += `
+                          <div class="pokecard-holder">
+                            <div class="pokecard-inner"  onclick="checkMatch(this)">
+                              <div class="pokecard-front ${urlData.types[0].type.name}-type" name="${urlData.name}">
+                                <h3>${urlData.name}</h3>
+                                <img class="poke-img" src="${urlData.sprites.front_default}">
+                                <h3>#${urlData.id}</h3>
+                              </div>
+                              
+                              <div class="pokecard-back">
+                                <div class="pokeball"> 
+                                  <div class="pokeball-top"></div>
+                                  <div class="pokeball-bottom"></div>
+                                  <div class="pokeball-center">
+                                    <div class="pokeball-btn"></div>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                            </div>
+                          </div>
+                        
+                        `;
 
-    let pokeCards = document.getElementsByClassName('card');
+    let pokeCards = document.getElementsByClassName('pokecard-front');
     var btns = document.getElementsByClassName('poke-img');
     for(var i = 0; i < btns.length; i++) {
       pokeCards[i].addEventListener('click', function () {
+        // this is where my error is
         let firstPick = this.getAttribute('name');
         let pokeHolder = [];
         pokeHolder.push(firstPick);
