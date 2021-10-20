@@ -3,7 +3,7 @@ let randomPokemonArr = [];
 let newNumArr = [];
 let pickArr = [];
 let roundStarted = false;
-
+const pokeCry = document.getElementById('poke-cry');
 
 const kanto = async () =>{
   
@@ -28,9 +28,9 @@ const getData = async (pokemon)=>{
     const urlData = await response.json();
 
     main.innerHTML += `
-                          <div class="pokecard-holder">
-                            <div class="pokecard-inner"  onclick="checkMatch(this)">
-                              <div class="pokecard-front ${urlData.types[0].type.name}-type" name="${urlData.name}">
+                          <div class="pokecard-holder" name="${urlData.name}" onclick="checkMatch(this)">
+                            <div class="pokecard-inner" >
+                              <div class="pokecard-front ${urlData.types[0].type.name}-type" >
                                 <h3>${urlData.name}</h3>
                                 <img class="poke-img" src="${urlData.sprites.front_default}">
                                 <h3>#${urlData.id}</h3>
@@ -67,6 +67,8 @@ const getData = async (pokemon)=>{
 }
 
 function checkMatch(e){
+  pokeCry.src = `./incs/pokeCries/${e.getAttribute('name')}.mp3`
+  pokeCry.play();
   pickArr.push(e);
   console.log(pickArr);
   pickArr[0].style.pointerEvents = "none";
