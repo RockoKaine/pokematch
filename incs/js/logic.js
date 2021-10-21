@@ -72,7 +72,7 @@ const kanto = async () =>{
 
     function randomnessArray(arr){
       if(randomPokemonArr.length >= cardsCount ) return;
-      let newNumber = Math.floor(Math.random() * 152);
+      let newNumber = Math.floor(Math.random() * 151 + 1);
     
       if(newNumArr.indexOf(newNumber) < 0){
           newNumArr.push(newNumber);
