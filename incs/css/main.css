@@ -15,7 +15,7 @@ body {
     justify-content: space-between;
     font-family: Basic;
     letter-spacing: 3px;
-    font-size: 0.55rem;
+    font-size: 0.6rem;
     text-align: center;
 }
 
@@ -34,12 +34,14 @@ body {
     display: grid;
     /* background-color: #00459e; */
     padding-top: 20px;
+    gap: 20px;
     height: 100%;
-    width: 84%;
-    grid-template-columns: repeat(8, 10%);
-    grid-template-rows: repeat(auto-fill, 25%);
-    justify-content: space-evenly;
-    align-content: space-between;
+    width: 90%;
+    grid-template-columns: repeat(auto-fill, 175px);
+    /* grid-template-rows: repeat(auto-fill, 25%); */
+    justify-content: center;
+    align-content: center;
+    align-items: center;
 }
 
 
@@ -50,10 +52,12 @@ body {
 
 .pokecard-holder {
   /* width: 165px; */
-  height: 190px;
+  height: 200px;
   text-transform: uppercase;
   text-shadow: 0 0 5px rgba(0, 0, 0, 1); 
   color: whitesmoke;
+  cursor: pointer;
+  
 }
 
 
@@ -64,18 +68,21 @@ body {
   position: relative;
   perspective: 1000px;
   transform-style: preserve-3d;
+  transition: all 0.5s ease;
+  
   
 }
 
 .pokecard-holder:hover .pokecard-inner {
-  -webkit-animation: flip-scale-2-ver-right 0.5s linear both;
-          animation: flip-scale-2-ver-right 0.5s linear both;
+  /* filter: brightness(50%); */
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 
 /* better flip */
 
-.flip-scale-2-ver-right {
+.card-flip {
   -webkit-animation: flip-scale-2-ver-right 0.5s linear both;
           animation: flip-scale-2-ver-right 0.5s linear both;
 }
@@ -157,6 +164,9 @@ body {
   align-items: center;
   border-radius: 20px;
   border: 6px solid rgb(255, 203, 5);
+  box-shadow: inset 0 0 20px 1px rgba(0, 0, 0, 0.7);
+  transform: rotateY(180deg);
+
   
 }
 
@@ -169,7 +179,7 @@ body {
   align-items: center;
   border-radius: 20px;
   border: 6px solid rgb(255, 203, 5);
-  transform: rotateY(180deg);
+  /* transform: rotateY(180deg); */
   
   
 }
@@ -248,58 +258,59 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
 /* Poke Type Colors */
 
 .grass-type {
-  background: linear-gradient(#01B248, #d6ffcb);
+  background: linear-gradient(45deg, #01B248, #d6ffcb, #01B248);
+  
 }
 .fire-type {
-  background: linear-gradient(#FD0400, #e9807e);
+  background: linear-gradient(45deg, #FD0400, #e9807e, #FD0400);
 }
 .water-type {
-  background: linear-gradient(#00459e, #516bff);
+  background: linear-gradient(45deg, #00459e, #516bff, #00459e);
 }
 .rock-type {
-  background: linear-gradient(#727272, #cccccc);
+  background: linear-gradient(45deg, #727272, #cccccc, #727272);
 }
 .electric-type {
-  background: linear-gradient(#e09900, #fffdc4 );
+  background: linear-gradient(45deg,#e09900, #fffdc4, #e09900, );
 }
 .psychic-type {
-  background: linear-gradient(#ff0088, #ffb1db);
+  background: linear-gradient(45deg,#ff0088, #ffb1db, #ff0088);
 }
 .fighting-type {
-  background: linear-gradient( #E00000, #df9696 );
+  background: linear-gradient(45deg, #E00000, #df9696, #E00000 );
 }
 .normal-type {
-  background: linear-gradient(#ffae00, #ffe9be );
+  background: linear-gradient(45deg,#ffae00, #ffe9be, #ffae00 );
 }
 .ground-type {
-  background: linear-gradient(#996300, #fae9b6 );
+  background: linear-gradient(45deg,#996300, #fae9b6, #996300 );
 }
 .flying-type {
-  background: linear-gradient(#00B1F4, #8fd0e7);
+  background: linear-gradient(45deg,#00B1F4, #8fd0e7, #00B1F4);
 }
 .bug-type {
-  background: linear-gradient(#6ED142, #e8ffde);
+  background: linear-gradient(45deg, #6ED142, #e8ffde, #6ED142);
 }
 .poison-type {
-  background: linear-gradient(#EE00D0, #e0b1da );
+  background: linear-gradient(45deg,#EE00D0, #e0b1da, #EE00D0 );
 }
 .dark-type {
-  background: linear-gradient(#973802, #d8ae96 );
+  background: linear-gradient(45deg,#973802, #d8ae96, #973802 );
 }
 .ghost-type {
-  background: linear-gradient(#600074, #e66cff );
+  background: linear-gradient(45deg,#600074, #e66cff, #600074 );
 }
 .ice-type {
-  background: linear-gradient(#4fb9ff,#b4e3ff );
+  background: linear-gradient(45deg,#4fb9ff,#b4e3ff, #4fb9ff );
 }
 .steel-type {
-  background: linear-gradient(#acacac,#f7f6f4 );
+  background: linear-gradient(45deg,#acacac,#f7f6f4, #acacac );
 }
 .dragon-type {
-  background: linear-gradient(#7E2FA2,#e3bdf5 );
+  background: linear-gradient(45deg,#7E2FA2,#e3bdf5, #7E2FA2 );
 }
 .fairy-type {
-  background: linear-gradient(#ec00ec,#ffbdff );
+  background: linear-gradient(45deg,#ec00ec,#ffbdff, #ec00ec );
 }
 
 

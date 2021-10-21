@@ -8,8 +8,11 @@ let roundStarted = false;
 let turns = 0;
 let matches = 0;
 const pokeCry = document.getElementById('poke-cry');
+const easyBtn = document.getElementById('easy-btn');
+const mediumBtn = document.getElementById('medium-btn');
+const hardBtn = document.getElementById('hard-btn');
 const resetBtn = document.getElementById('reset-btn');
-let cardsCount = 4;
+let cardsCount = 32;
 let level = 1;
 resetBtn.addEventListener('click', ()=>{
   main.innerHTML = "";
@@ -17,10 +20,40 @@ resetBtn.addEventListener('click', ()=>{
       matches = 0;
       matchesCount.innerHTML = `Matches <br>${matches} `;
       turnsCount.innerHTML = `Turns <br>${turns} `;
+      randomPokemonArr = [];
   kanto();
 });
 
-
+easyBtn.addEventListener('click', ()=>{
+  cardsCount = 8;
+  main.innerHTML = "";
+      turns = 0;
+      matches = 0;
+      matchesCount.innerHTML = `Matches <br>${matches} `;
+      turnsCount.innerHTML = `Turns <br>${turns} `;
+      randomPokemonArr = [];
+  kanto();
+});
+mediumBtn.addEventListener('click', ()=>{
+  cardsCount = 24;
+  main.innerHTML = "";
+      turns = 0;
+      matches = 0;
+      matchesCount.innerHTML = `Matches <br>${matches} `;
+      turnsCount.innerHTML = `Turns <br>${turns} `;
+      randomPokemonArr = [];
+  kanto();
+});
+hardBtn.addEventListener('click', ()=>{
+  cardsCount = 32;
+  main.innerHTML = "";
+      turns = 0;
+      matches = 0;
+      matchesCount.innerHTML = `Matches <br>${matches} `;
+      turnsCount.innerHTML = `Turns <br>${turns} `;
+      randomPokemonArr = [];
+  kanto();
+});
 
 let matchesCount = document.getElementById('matches');
 matchesCount.innerHTML = `Matches <br>${matches} `;
@@ -32,11 +65,50 @@ const kanto = async () =>{
     const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');
     const data = await response.json();
     const pokeData = data.results;
+
+
+
+
+
+    function randomnessArray(arr){
+      if(randomPokemonArr.length >= cardsCount ) return;
+      let newNumber = Math.floor(Math.random() * 152);
+    
+      if(newNumArr.indexOf(newNumber) < 0){
+          newNumArr.push(newNumber);
+          randomPokemonArr.push(arr[newNumber]);
+          randomPokemonArr.push(arr[newNumber]);
+      }
+      randomnessArray(arr);
+      
+  }
+  
+  
+  function shuffledUp(arr) {
+    let newPos,
+        temp;
+    for(let i = arr.length -1; i > 0; i--){
+      newPos = Math.floor(Math.random() * (i+1));
+      temp = arr[i];
+      arr[i] = arr[newPos];
+      arr[newPos] = temp;
+    }
+    return arr;
+  }
+
+
+
+
+
+
+
+
     
     randomnessArray(pokeData);
     let shuffled = shuffledUp(randomPokemonArr);
     for(let i = 0; i < cardsCount; i++){   
         getData(shuffled[i]);
+
     }       
  
 }
@@ -45,10 +117,11 @@ const getData = async (pokemon)=>{
     let url = pokemon.url;
     const response = await fetch(url);
     const urlData = await response.json();
+    
 
     main.innerHTML += `
-                          <div class="pokecard-holder" name="${urlData.name}" onclick="checkMatch(this)">
-                            <div class="pokecard-inner" >
+                          <div class="pokecard-holder" >
+                            <div class="pokecard-inner" name="${urlData.name}" onclick="checkMatch(this)">
                               <div class="pokecard-front ${urlData.types[0].type.name}-type" >
                                 <h3>${urlData.name}</h3>
                                 <img class="poke-img" src="${urlData.sprites.front_default}">
@@ -70,6 +143,11 @@ const getData = async (pokemon)=>{
                         
                         `;
 
+
+
+
+                        
+
     let pokeCards = document.getElementsByClassName('pokecard-front');
     var btns = document.getElementsByClassName('poke-img');
     for(var i = 0; i < btns.length; i++) {
@@ -88,6 +166,7 @@ const getData = async (pokemon)=>{
 function checkMatch(e){
   pokeCry.src = `./incs/pokeCries/${e.getAttribute('name')}.mp3`
   pokeCry.play();
+  e.classList.toggle('card-flip')
   pickArr.push(e);
   console.log(pickArr);
   pickArr[0].style.pointerEvents = "none";
@@ -98,14 +177,16 @@ function checkMatch(e){
       matchesCount.innerHTML = `Matches <br>${matches} `;
       turns++;
       turnsCount.innerHTML = `Turns <br>${turns} `;
-      alert('Winner Winner! Chicken Dinner!');
+      // alert('Winner Winner! Chicken Dinner!');
       pickArr = [];
-      main.innerHTML = '';
-      kanto();
     } else {
       turns++;
       turnsCount.innerHTML = `Turns <br>${turns} `;
       pickArr[0].style.pointerEvents = null;
+      pickArr[0].classList.toggle('card-flip');
+      setTimeout(()=>{
+        e.classList.toggle('card-flip');
+      },1500);
       pickArr = [];
 
     }
@@ -114,31 +195,31 @@ function checkMatch(e){
 }
 
     
-function randomnessArray(arr){
-    if(randomPokemonArr.length >= cardsCount ) return;
-    let newNumber = Math.floor(Math.random() * 152);
+// function randomnessArray(arr){
+//     if(randomPokemonArr.length >= cardsCount ) return;
+//     let newNumber = Math.floor(Math.random() * 152);
   
-    if(newNumArr.indexOf(newNumber) < 0){
-        newNumArr.push(newNumber);
-        randomPokemonArr.push(arr[newNumber]);
-        randomPokemonArr.push(arr[newNumber]);
-    }
-    randomnessArray(arr);
+//     if(newNumArr.indexOf(newNumber) < 0){
+//         newNumArr.push(newNumber);
+//         randomPokemonArr.push(arr[newNumber]);
+//         randomPokemonArr.push(arr[newNumber]);
+//     }
+//     randomnessArray(arr);
     
-}
+// }
 
 
-function shuffledUp(arr) {
-  let newPos,
-      temp;
-  for(let i = arr.length -1; i > 0; i--){
-    newPos = Math.floor(Math.random() * (i+1));
-    temp = arr[i];
-    arr[i] = arr[newPos];
-    arr[newPos] = temp;
-  }
-  return arr;
-}
+// function shuffledUp(arr) {
+//   let newPos,
+//       temp;
+//   for(let i = arr.length -1; i > 0; i--){
+//     newPos = Math.floor(Math.random() * (i+1));
+//     temp = arr[i];
+//     arr[i] = arr[newPos];
+//     arr[newPos] = temp;
+//   }
+//   return arr;
+// }
 
 
 
