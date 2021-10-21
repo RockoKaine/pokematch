@@ -8,7 +8,8 @@ html {
   width: 100%;
 }
 body {
-    background: #3d3d3d;
+    /* background: #3d3d3d; */
+    background: #468b74;
     height: 100%;
     width: 100%;
     display: flex;
@@ -58,6 +59,7 @@ body {
   color: whitesmoke;
   cursor: pointer;
   
+  
 }
 
 
@@ -75,8 +77,10 @@ body {
 
 .pokecard-holder:hover .pokecard-inner {
   /* filter: brightness(50%); */
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
+  -webkit-transform: scale(1.06);
+  transform: scale(1.06);
+  border-radius: 20px;
+  box-shadow: 4px 4px 6px 4px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -149,6 +153,7 @@ body {
   transform: rotateY(0deg);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  box-shadow: 2px 1px 6px 1px rgba(0, 0, 0, 0.5);
 }
 
 .poke-img {
