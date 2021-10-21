@@ -1,9 +1,31 @@
+// maybe make levels, 2 cards, 4 cards, 8, 16, 32...
+
 const main = document.getElementById('main');
 let randomPokemonArr = [];
 let newNumArr = [];
 let pickArr = [];
 let roundStarted = false;
+let turns = 0;
+let matches = 0;
 const pokeCry = document.getElementById('poke-cry');
+const resetBtn = document.getElementById('reset-btn');
+let cardsCount = 4;
+let level = 1;
+resetBtn.addEventListener('click', ()=>{
+  main.innerHTML = "";
+      turns = 0;
+      matches = 0;
+      matchesCount.innerHTML = `Matches <br>${matches} `;
+      turnsCount.innerHTML = `Turns <br>${turns} `;
+  kanto();
+});
+
+
+
+let matchesCount = document.getElementById('matches');
+matchesCount.innerHTML = `Matches <br>${matches} `;
+let turnsCount = document.getElementById('turns');
+turnsCount.innerHTML = `Turns <br>${turns} `;
 
 const kanto = async () =>{
   
@@ -13,10 +35,7 @@ const kanto = async () =>{
     
     randomnessArray(pokeData);
     let shuffled = shuffledUp(randomPokemonArr);
-    // Dont know why I was double shuffling, but it seems to create a not so random array order
-    // Keeping it just in case I somehow break my code.
-    // shuffled = shuffledUp(shuffled);
-    for(let i = 0; i < 32; i++){   
+    for(let i = 0; i < cardsCount; i++){   
         getData(shuffled[i]);
     }       
  
@@ -75,9 +94,17 @@ function checkMatch(e){
   if(pickArr.length === 2){
     if(pickArr[0].getAttribute('name') === pickArr[1].getAttribute('name')){
       pickArr[1].style.pointerEvents = "none";
+      matches++;
+      matchesCount.innerHTML = `Matches <br>${matches} `;
+      turns++;
+      turnsCount.innerHTML = `Turns <br>${turns} `;
       alert('Winner Winner! Chicken Dinner!');
       pickArr = [];
+      main.innerHTML = '';
+      kanto();
     } else {
+      turns++;
+      turnsCount.innerHTML = `Turns <br>${turns} `;
       pickArr[0].style.pointerEvents = null;
       pickArr = [];
 
@@ -88,7 +115,7 @@ function checkMatch(e){
 
     
 function randomnessArray(arr){
-    if(randomPokemonArr.length >= 32) return;
+    if(randomPokemonArr.length >= cardsCount ) return;
     let newNumber = Math.floor(Math.random() * 152);
   
     if(newNumArr.indexOf(newNumber) < 0){
