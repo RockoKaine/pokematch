@@ -62,7 +62,7 @@ toggleInfoBtn.addEventListener('click', ()=>{
   document.getElementById('game-info').classList.toggle('toggle-margin');
 
   if(isArrow){
-    toggleInfoBtn.style.marginLeft = "320px";
+    toggleInfoBtn.style.marginLeft = "335px";
     toggleInfoBtn.innerHTML = `<img class="toggle-btn"src="./incs/x.png" alt="">`;
     isArrow = false;
   } else {
