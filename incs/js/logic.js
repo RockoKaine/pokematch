@@ -1,6 +1,7 @@
 // maybe make levels, 2 cards, 4 cards, 8, 16, 32...
 
 const main = document.getElementById('main');
+let isArrow = true;
 let randomPokemonArr = [];
 let newNumArr = [];
 let pickArr = [];
@@ -57,7 +58,20 @@ hardBtn.addEventListener('click', ()=>{
 });
 
 toggleInfoBtn.addEventListener('click', ()=>{
+  
   document.getElementById('game-info').classList.toggle('toggle-margin');
+
+  if(isArrow){
+    toggleInfoBtn.style.marginLeft = "320px";
+    toggleInfoBtn.innerHTML = `<img class="toggle-btn"src="./incs/x.png" alt="">`;
+    isArrow = false;
+  } else {
+    toggleInfoBtn.style.marginLeft = "0px";
+    toggleInfoBtn.innerHTML = `<img class="toggle-btn"src="./incs/arrow.png" alt="">`;
+    isArrow = true;
+  }
+ 
+
 });
 
 

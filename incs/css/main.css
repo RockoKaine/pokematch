@@ -39,6 +39,12 @@ body {
 
 #toggle-info {
   display: none;
+  transition: all 0.3s ease;
+
+}
+.toggle-btn {
+    height: 45px;
+    
 }
 
 #main {
@@ -339,6 +345,7 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
   justify-content: space-between;
   align-items: center;
   border-left: 60px solid #c9c5c2;
+  
 }
 .game-logo {
   width: 100%;
@@ -514,10 +521,15 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
   #toggle-info {
     display: inline;
     position: absolute;
-    left: 3%;
-    top: 2%;
+    left: 4%;
+    top: 4%;
     z-index: 6;
     
+  }
+
+  #toggle-info:hover {
+      filter: brightness(85%);
+      cursor: pointer;
   }
 
   /* #toggle-info:active + #game-info {
