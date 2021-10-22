@@ -617,7 +617,6 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
   }
   
   #main {
-      /* grid-template-columns: repeat(4, 20%); */
       grid-template-columns: repeat(4, 20%);
   }
 

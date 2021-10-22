@@ -1,5 +1,3 @@
-// maybe make levels, 2 cards, 4 cards, 8, 16, 32...
-
 const main = document.getElementById('main');
 let isArrow = true;
 let randomPokemonArr = [];
@@ -16,51 +14,34 @@ const resetBtn = document.getElementById('reset-btn');
 const toggleInfoBtn = document.getElementById('toggle-info');
 let cardsCount = 32;
 let level = 1;
+let matchesCount = document.getElementById('matches');
+let turnsCount = document.getElementById('turns');
+
+
+
+
+// Event Listeners
 resetBtn.addEventListener('click', ()=>{
-  main.innerHTML = "";
-      turns = 0;
-      matches = 0;
-      matchesCount.innerHTML = `Matches <br>${matches} `;
-      turnsCount.innerHTML = `Turns <br>${turns} `;
-      randomPokemonArr = [];
-  kanto();
+  resetBoard();
 });
 
 easyBtn.addEventListener('click', ()=>{
   cardsCount = 8;
-  main.innerHTML = "";
-      turns = 0;
-      matches = 0;
-      matchesCount.innerHTML = `Matches <br>${matches} `;
-      turnsCount.innerHTML = `Turns <br>${turns} `;
-      randomPokemonArr = [];
-  kanto();
+  resetBoard();
 });
 mediumBtn.addEventListener('click', ()=>{
   cardsCount = 24;
-  main.innerHTML = "";
-      turns = 0;
-      matches = 0;
-      matchesCount.innerHTML = `Matches <br>${matches} `;
-      turnsCount.innerHTML = `Turns <br>${turns} `;
-      randomPokemonArr = [];
-  kanto();
+  resetBoard();
 });
 hardBtn.addEventListener('click', ()=>{
   cardsCount = 32;
-  main.innerHTML = "";
-      turns = 0;
-      matches = 0;
-      matchesCount.innerHTML = `Matches <br>${matches} `;
-      turnsCount.innerHTML = `Turns <br>${turns} `;
-      randomPokemonArr = [];
-  kanto();
+  resetBoard();
 });
 
-toggleInfoBtn.addEventListener('click', ()=>{
-  
-  document.getElementById('game-info').classList.toggle('toggle-margin');
+// Toggling The side bar and the arrow. Only When screen hits < 1000px
 
+toggleInfoBtn.addEventListener('click', ()=>{
+  document.getElementById('game-info').classList.toggle('toggle-margin');
   if(isArrow){
     toggleInfoBtn.style.marginLeft = "335px";
     toggleInfoBtn.innerHTML = `<img class="toggle-btn"src="./incs/x.png" alt="">`;
@@ -70,8 +51,6 @@ toggleInfoBtn.addEventListener('click', ()=>{
     toggleInfoBtn.innerHTML = `<img class="toggle-btn"src="./incs/arrow.png" alt="">`;
     isArrow = true;
   }
- 
-
 });
 
 
@@ -79,21 +58,15 @@ toggleInfoBtn.addEventListener('click', ()=>{
 
 
 
-let matchesCount = document.getElementById('matches');
-matchesCount.innerHTML = `Matches <br>${matches} `;
-let turnsCount = document.getElementById('turns');
-turnsCount.innerHTML = `Turns <br>${turns} `;
+
 
 const kanto = async () =>{
-  
+  // interacting with the poke api to generate data
     const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');
     const data = await response.json();
     const pokeData = data.results;
 
-
-
-
-
+    // Creating an array of x amount of pokemon
     function randomnessArray(arr){
       if(randomPokemonArr.length >= cardsCount ) return;
       let newNumber = Math.floor(Math.random() * 151) + 1;
@@ -103,11 +76,10 @@ const kanto = async () =>{
           randomPokemonArr.push(arr[newNumber]);
           randomPokemonArr.push(arr[newNumber]);
       }
-      randomnessArray(arr);
-      
+      randomnessArray(arr);      
   }
   
-  
+  // Fully shuffle the array
   function shuffledUp(arr) {
     let newPos,
         temp;
@@ -119,15 +91,8 @@ const kanto = async () =>{
     }
     return arr;
   }
-
-
-
-
-
-
-
-
     
+  // creating an array of random choices from the api
     randomnessArray(pokeData);
     let shuffled = shuffledUp(randomPokemonArr);
     for(let i = 0; i < cardsCount; i++){   
@@ -137,6 +102,7 @@ const kanto = async () =>{
  
 }
 
+// genertaing the pokecards from the api's data
 const getData = async (pokemon)=>{
     let url = pokemon.url;
     const response = await fetch(url);
@@ -175,7 +141,6 @@ const getData = async (pokemon)=>{
     var btns = document.getElementsByClassName('poke-img');
     for(var i = 0; i < btns.length; i++) {
       pokeCards[i].addEventListener('click', function () {
-        // this is where my error is
         let firstPick = this.getAttribute('name');
         let pokeHolder = [];
         pokeHolder.push(firstPick);
@@ -187,21 +152,30 @@ const getData = async (pokemon)=>{
 }
 
 function checkMatch(e){
+  // Setting the audio element src for the pokemon cries
   pokeCry.src = `./incs/pokeCries/${e.getAttribute('name')}.mp3`
+  // Plays the audio of pokemon that was flipped
   pokeCry.play();
-  e.classList.toggle('card-flip')
+
+  // Flip the card, push the element to the array, then deactivate the card!
+  e.classList.toggle('card-flip');
   pickArr.push(e);
-  console.log(pickArr);
   pickArr[0].style.pointerEvents = "none";
+
+  // Checcking to see if the array of picks has two items, then checking the 
+  //two items to see if they are a match the update the score board
+
+  // If there wasn't update board unflip the cards and make the card active again
   if(pickArr.length === 2){
     if(pickArr[0].getAttribute('name') === pickArr[1].getAttribute('name')){
+
       pickArr[1].style.pointerEvents = "none";
       matches++;
       matchesCount.innerHTML = `Matches <br>${matches} `;
       turns++;
       turnsCount.innerHTML = `Turns <br>${turns} `;
-      // alert('Winner Winner! Chicken Dinner!');
       pickArr = [];
+
     } else {
       turns++;
       turnsCount.innerHTML = `Turns <br>${turns} `;
@@ -211,38 +185,22 @@ function checkMatch(e){
         e.classList.toggle('card-flip');
       },1500);
       pickArr = [];
-
     }
   }
   
 }
 
-    
-// function randomnessArray(arr){
-//     if(randomPokemonArr.length >= cardsCount ) return;
-//     let newNumber = Math.floor(Math.random() * 152);
-  
-//     if(newNumArr.indexOf(newNumber) < 0){
-//         newNumArr.push(newNumber);
-//         randomPokemonArr.push(arr[newNumber]);
-//         randomPokemonArr.push(arr[newNumber]);
-//     }
-//     randomnessArray(arr);
-    
-// }
 
-
-// function shuffledUp(arr) {
-//   let newPos,
-//       temp;
-//   for(let i = arr.length -1; i > 0; i--){
-//     newPos = Math.floor(Math.random() * (i+1));
-//     temp = arr[i];
-//     arr[i] = arr[newPos];
-//     arr[newPos] = temp;
-//   }
-//   return arr;
-// }
+// Function to reset the board and score
+function resetBoard(){
+  main.innerHTML = "";
+  turns = 0;
+  matches = 0;
+  matchesCount.innerHTML = `Matches <br>${matches} `;
+  turnsCount.innerHTML = `Turns <br>${turns} `;
+  randomPokemonArr = [];
+kanto();
+}
 
 
 
