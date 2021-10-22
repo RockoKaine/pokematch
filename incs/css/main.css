@@ -329,7 +329,7 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
 
 /* game info */
 
-#game-info {
+.game-info {
   /* height: 100%; */
   width: 25%;
   /* min-height: 100%; */
@@ -502,6 +502,10 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
       display: none;
     }
 
+    #poke-id-number {
+      font-size: 0.7rem;
+    }
+
 
 }
 
@@ -512,11 +516,13 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
     position: absolute;
     left: 3%;
     top: 2%;
+    z-index: 6;
+    
   }
 
-  #toggle-info:active #game-info {
+  /* #toggle-info:active + #game-info {
     margin: 0;
-  }
+  } */
   
   #main{
     width: 100%;
@@ -526,8 +532,16 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
     height: 125px;
     border: 2px;
   }
-  #game-info {
-    margin: -30%;
+  .game-info {
+    margin-left:-200%;
+    height: 100%;
+    transition: all 0.5s ease;
+    width: 340px;
+    position: absolute;
+    z-index: 5;
+  }
+  .toggle-margin {
+    margin-left: 0%;
   }
 
   #poke-id-number {
@@ -540,4 +554,55 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
   }
   
   
+}
+
+@media only screen and (max-width: 700px){
+  .pokecard-holder {
+    height: 75px;
+  }
+  .poke-img {
+    width: 135%;
+  }
+  .pokecard-front, .pokecard-back {
+    border-radius: 8px;
+  }
+
+  /* fff */
+  .pokeball-top {
+    height: 13px;
+     width: 26px;
+      border-radius: 15px 15px 0 0;
+      border: solid 1px black;
+      
+    }
+    
+    .pokeball-bottom {
+      height: 13px;
+      width: 26px;
+      border-radius:  0 0 15px 15px;
+      border: solid 1px black;
+      
+    }
+    
+    .pokeball-center {
+      height: 10px;
+      width: 10px;
+      border: solid 1px black;
+    }
+    
+    .pokeball-btn {
+      display: none;
+    }
+
+    #poke-id-number {
+      font-size: 0.7rem;
+    }
+
+}
+@media only screen and (max-width: 500px){
+  .pokecard-holder {
+    height: 60px;
+  }
+  
+
 }

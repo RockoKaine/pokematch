@@ -12,6 +12,7 @@ const easyBtn = document.getElementById('easy-btn');
 const mediumBtn = document.getElementById('medium-btn');
 const hardBtn = document.getElementById('hard-btn');
 const resetBtn = document.getElementById('reset-btn');
+const toggleInfoBtn = document.getElementById('toggle-info');
 let cardsCount = 32;
 let level = 1;
 resetBtn.addEventListener('click', ()=>{
@@ -55,6 +56,15 @@ hardBtn.addEventListener('click', ()=>{
   kanto();
 });
 
+toggleInfoBtn.addEventListener('click', ()=>{
+  document.getElementById('game-info').classList.toggle('toggle-margin');
+});
+
+
+
+
+
+
 let matchesCount = document.getElementById('matches');
 matchesCount.innerHTML = `Matches <br>${matches} `;
 let turnsCount = document.getElementById('turns');
@@ -72,7 +82,7 @@ const kanto = async () =>{
 
     function randomnessArray(arr){
       if(randomPokemonArr.length >= cardsCount ) return;
-      let newNumber = Math.floor(Math.random() * 151 + 1);
+      let newNumber = Math.floor(Math.random() * 151) + 1;
     
       if(newNumArr.indexOf(newNumber) < 0){
           newNumArr.push(newNumber);
