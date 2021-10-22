@@ -13,6 +13,7 @@ body {
     height: 100%;
     width: 100%;
     display: flex;
+    /* flex-direction: column; */
     justify-content: space-between;
     font-family: Basic;
     letter-spacing: 3px;
@@ -36,6 +37,9 @@ body {
   src: url(../PocketMonk-15ze.ttf);
 }
 
+#toggle-info {
+  display: none;
+}
 
 #main {
     display: grid;
@@ -164,6 +168,14 @@ body {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   box-shadow: 2px 1px 6px 1px rgba(0, 0, 0, 0.5);
+  border: 6px solid rgb(255, 203, 5);
+  border-radius: 20px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .poke-img {
@@ -171,14 +183,7 @@ body {
 }
 
 .pokecard-front {
-   position: absolute;
   background: linear-gradient(#FFFC00, #fffdc4 );
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 20px;
-  border: 6px solid rgb(255, 203, 5);
   box-shadow: inset 0 0 20px 1px rgba(0, 0, 0, 0.7);
   transform: rotateY(180deg);
 
@@ -186,15 +191,8 @@ body {
 }
 
 .pokecard-back {
-  position: absolute;
   background: linear-gradient(-40deg, #3c5aa6, #88bdf3);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 20px;
-  border: 6px solid rgb(255, 203, 5);
-  /* transform: rotateY(180deg); */
+  
   
   
 }
@@ -394,10 +392,14 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
   font-family: Dots;
   line-height: 3rem;
 }
+
 #game-controls {
   width: 100%;
   height: 30%;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn {
@@ -441,12 +443,7 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
 }
 
 
-#game-controls {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+
 
 
 
@@ -460,7 +457,7 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
 
     }
     .pokecard-holder {
-        height: 150px;
+        height: 125px;
     }
     
 }
@@ -478,4 +475,69 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
     .btn {
         font-size: 0.9rem;
     }
+    
+    .pokeball-top {
+    height: 19px;
+     width: 38px;
+      border-radius: 21px 21px 0 0;
+      border: solid 1px black;
+      
+    }
+    
+    .pokeball-bottom {
+      height: 19px;
+      width: 38px;
+      border-radius:  0 0 21px 21px;
+      border: solid 1px black;
+      
+    }
+    
+    .pokeball-center {
+      height: 10px;
+      width: 10px;
+      border: solid 1px black;
+    }
+    
+    .pokeball-btn {
+      display: none;
+    }
+
+
+}
+
+@media only screen and (max-width: 1000px) {
+
+  #toggle-info {
+    display: inline;
+    position: absolute;
+    left: 3%;
+    top: 2%;
+  }
+
+  #toggle-info:active #game-info {
+    margin: 0;
+  }
+  
+  #main{
+    width: 100%;
+    /* grid-template-columns: repeat(8, 11%); */
+  }
+  .pokecard-holder {
+    height: 125px;
+    border: 2px;
+  }
+  #game-info {
+    margin: -30%;
+  }
+
+  #poke-id-number {
+    display: none;
+  }
+  
+
+  .pokecard-front, .pokecard-back {
+    border: solid 3px rgb(255, 203, 5);
+  }
+  
+  
 }

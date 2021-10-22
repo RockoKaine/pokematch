@@ -124,7 +124,7 @@ const getData = async (pokemon)=>{
                             <div class="pokecard-inner" name="${urlData.name}" onclick="checkMatch(this)">
                               <div class="pokecard-front ${urlData.types[0].type.name}-type" >
                                 <img class="poke-img" src="${urlData.sprites.front_default}">
-                                <h3>${urlData.id}</h3>
+                                <h3 id="poke-id-number">${urlData.id}</h3>
                               </div>
                               
                               <div class="pokecard-back">
