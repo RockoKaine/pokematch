@@ -16,7 +16,7 @@ body {
     justify-content: space-between;
     font-family: Basic;
     letter-spacing: 3px;
-    font-size: 0.6rem;
+    font-size: 1.5rem;
     text-align: center;
     align-items: stretch;
     
@@ -43,14 +43,14 @@ body {
     box-shadow: inset 0 0 30px 15px rgba(0, 0, 0, 0.7);
     padding-top: 20px;
     gap: 10px;
-    /* min-height: 100%; */
+    /* height: 100%; */
     width: 90%;
-    grid-template-columns: repeat(auto-fill, 160px);
+    grid-template-columns: repeat(8, 10%);
     /* grid-template-rows: repeat(auto-fill, 25%); */
     justify-content: center;
     align-content: center;
-    align-items: center;
-    overflow: auto;
+    align-items: stretch;
+    /* overflow: auto; */
 }
 
 
@@ -167,7 +167,7 @@ body {
 }
 
 .poke-img {
-  width : 65%;
+  width : 100%;
 }
 
 .pokecard-front {
@@ -351,9 +351,9 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
 }
 .game-logo h1 {
   font-family: PokeFont;
-  font-size: 4rem;
+  font-size: 3rem;
   /* color: #e09900; */
-  -webkit-text-stroke: 3px #3c5aa6;
+  -webkit-text-stroke: 2px #3c5aa6;
   -webkit-text-fill-color:#e09900;
   /* letter-spacing: -5px; */
 
@@ -367,6 +367,11 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
   margin: 25px auto;
   box-shadow: 0 0 10px 0 rgba(255, 0, 0, 0.8);
   box-shadow: inset 0 0 10px 1px rgba(0, 0, 0, 0.8);
+}
+.battery {
+    color: whitesmoke;
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #scoreboard {
@@ -397,10 +402,10 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
 
 .btn {
   text-decoration: none;
-  font-size: 1.4rem;
-  padding: 16px;
+  font-size: 1.3rem;
+  padding: 20px 15px;
   text-align: center;
-  width: 65%;
+  width: 70%;
   /* border-radius: 10px; */
   border-bottom: solid 6px black;
   border-right: solid 6px black;
@@ -443,3 +448,34 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
   align-items: center;
 }
 
+
+
+@media only screen and (max-width: 1330px) {
+    body{
+        font-size: 1rem;
+    }
+    .main {
+        /* grid-template-columns: repeat(auto-fill, 5%); */
+        /* grid-template-rows: repeat(auto-fill, 1fr); */
+
+    }
+    .pokecard-holder {
+        height: 150px;
+    }
+    
+}
+@media only screen and (max-width: 1200px) {
+    .game-logo h1 {
+        font-size: 2rem;
+        -webkit-text-stroke: 1px #3c5aa6;
+        -webkit-text-fill-color:#e09900;
+    }
+    
+    #matches, #turns {
+        font-size: 2.7rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+    }
+}
