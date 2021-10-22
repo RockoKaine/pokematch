@@ -613,7 +613,7 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
 }
 @media only screen and (max-width: 500px){
   .pokecard-holder {
-    height: 60px;
+    height: 70px;
   }
   
   #main {
