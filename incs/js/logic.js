@@ -38,6 +38,7 @@ hardBtn.addEventListener('click', ()=>{
   resetBoard();
 });
 
+
 // Toggling The side bar and the arrow. Only When screen hits < 1000px
 
 toggleInfoBtn.addEventListener('click', ()=>{
@@ -165,7 +166,7 @@ function checkMatch(e){
   // Checcking to see if the array of picks has two items, then checking the 
   //two items to see if they are a match the update the score board
 
-  // If there wasn't update board unflip the cards and make the card active again
+  // If there wasn't update board un-flip the cards and make the card active again
   if(pickArr.length === 2){
     if(pickArr[0].getAttribute('name') === pickArr[1].getAttribute('name')){
 
@@ -180,11 +181,13 @@ function checkMatch(e){
       turns++;
       turnsCount.innerHTML = `Turns <br>${turns} `;
       pickArr[0].style.pointerEvents = null;
-      pickArr[0].classList.toggle('card-flip');
+      main.style.pointerEvents= "none";
       setTimeout(()=>{
+        pickArr[0].classList.toggle('card-flip');
         e.classList.toggle('card-flip');
-      },1500);
-      pickArr = [];
+        main.style.pointerEvents= null;
+        pickArr = [];
+      },3000);
     }
   }
   
