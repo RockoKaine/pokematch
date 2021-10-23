@@ -181,7 +181,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* z-index: 6; */
+  z-index: 6;
 
 }
 
@@ -346,8 +346,6 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
   justify-content: space-between;
   align-items: center;
   border-left: 60px solid #c9c5c2;
-  -webkit-transform: translate3d(0,0,0);
-  z-index: 9;
   
 }
 .game-logo {
@@ -526,7 +524,7 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
     position: absolute;
     left: 4%;
     top: 4%;
-    /* z-index: 6; */
+    z-index: 6;
     
   }
 
@@ -542,6 +540,9 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
   #main{
     width: 100%;
     /* grid-template-columns: repeat(8, 11%); */
+    position: absolute;
+    height: 100%;
+    z-index: 5;
   }
   .pokecard-holder {
     height: 125px;
