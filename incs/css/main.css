@@ -555,6 +555,7 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
     width: 340px;
     position: absolute;
     z-index: 100;
+    overflow: auto;
   }
   .toggle-margin {
     margin-left: 0%;
