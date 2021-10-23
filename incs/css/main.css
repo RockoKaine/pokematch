@@ -346,6 +346,7 @@ background: radial-gradient(ellipse at bottom left, #a60000  26%, #ffdede 120%);
   justify-content: space-between;
   align-items: center;
   border-left: 60px solid #c9c5c2;
+  -webkit-transform: translate3d(0,0,0);
   z-index: 9;
   
 }
