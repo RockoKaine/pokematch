@@ -70,22 +70,23 @@ const kanto = async () =>{
     // Creating an array of x amount of pokemon
     function randomnessArray(arr){
       if(randomPokemonArr.length >= cardsCount ) return;
-      let newNumber = Math.floor(Math.random() * 151) + 1;
+      let newNumber = Math.floor(Math.random() * 151);
     
       if(newNumArr.indexOf(newNumber) < 0){
           newNumArr.push(newNumber);
-          randomPokemonArr.push(arr[newNumber]);
+          randomPokemonArr.unshift(arr[newNumber]);
           randomPokemonArr.push(arr[newNumber]);
       }
-      randomnessArray(arr);      
-  }
+     return randomnessArray(arr);      
+    }
+  
   
   // Fully shuffle the array
   function shuffledUp(arr) {
     let newPos,
         temp;
-    for(let i = arr.length -1; i > 0; i--){
-      newPos = Math.floor(Math.random() * (i+1));
+    for(let i = arr.length -1; i >= 0; i--){
+      newPos = Math.floor(Math.random() * i) + 1;
       temp = arr[i];
       arr[i] = arr[newPos];
       arr[newPos] = temp;
@@ -96,11 +97,12 @@ const kanto = async () =>{
   // creating an array of random choices from the api
     randomnessArray(pokeData);
     let shuffled = shuffledUp(randomPokemonArr);
+    shuffled = shuffledUp(shuffled);
     for(let i = 0; i < cardsCount; i++){   
         getData(shuffled[i]);
 
     }       
- 
+    console.log(shuffled)
 }
 
 // genertaing the pokecards from the api's data
@@ -138,18 +140,18 @@ const getData = async (pokemon)=>{
 
                         
 
-    let pokeCards = document.getElementsByClassName('pokecard-front');
-    var btns = document.getElementsByClassName('poke-img');
-    for(var i = 0; i < btns.length; i++) {
-      pokeCards[i].addEventListener('click', function () {
-        let firstPick = this.getAttribute('name');
-        let pokeHolder = [];
-        pokeHolder.push(firstPick);
-        if(pokeHolder[0] === pokeHolder[1]){
-          console.log('Winner winner chicken dinner');
-        }
-      });
-    } 
+    // let pokeCards = document.getElementsByClassName('pokecard-front');
+    // var btns = document.getElementsByClassName('poke-img');
+    // for(var i = 0; i < btns.length; i++) {
+    //   pokeCards[i].addEventListener('click', function () {
+    //     let firstPick = this.getAttribute('name');
+    //     let pokeHolder = [];
+    //     pokeHolder.push(firstPick);
+    //     if(pokeHolder[0] === pokeHolder[1]){
+    //       console.log('Winner winner chicken dinner');
+    //     }
+    //   });
+    // } 
 }
 
 function checkMatch(e){
