@@ -86,7 +86,7 @@ body {
   perspective: 1000px;
   transform-style: preserve-3d;
   transition: all 0.5s ease;
-  
+  z-index: -1;
   
 }
 
@@ -95,6 +95,7 @@ body {
   transform: scale(1.06);
   border-radius: 20px;
   box-shadow: 4px 4px 6px 4px rgba(0, 0, 0, 0.5);
+
 }
 
 
